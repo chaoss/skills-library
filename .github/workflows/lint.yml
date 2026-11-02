@@ -1,0 +1,24 @@
+name: "Validate manifests"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Prevent multiple workflow runs from racing: cancel in-progress runs for
+# updated pull requests so validation always targets the latest revision.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  validate:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: actions/checkout@v7
+
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@v10
+
+      - name: "Validate manifests and scripts syntax"
+        run: make lint

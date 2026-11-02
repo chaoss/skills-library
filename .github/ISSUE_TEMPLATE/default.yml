@@ -1,0 +1,53 @@
+---
+name: General CHAOSS Skills Library Ticket
+description: Use this template for any ticket that does not fit within another template.
+labels:
+  - 'question'
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Welcome to the CHAOSS Agent Skills Library Tickets!
+        This form helps the maintainers process general questions, tooling requests, and suggestions. Using this template helps us understand your request and what you would like to see as an ideal outcome.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: In one sentence, describe your suggestion, question, or task.
+      placeholder: e.g., Request guidance on testing a multi-stage skill with local models...
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Background
+      description: Give context or background needed to understand your request. Preferably between two to five sentences. This helps us understand the "why".
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Describe the necessary details or steps to satisfactorily address your request. It is preferred to write this as a step-by-step list. This helps us understand the "how" of your request.
+    validations:
+      required: true
+
+  - type: input
+    id: outcome
+    attributes:
+      label: Outcome
+      description: In one sentence, describe the expected outcome or impact of completing your request.
+      placeholder: e.g., Contributors have clear reference examples for running local model evaluations...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: ai-disclosure
+    attributes:
+      label: AI Assistance Disclosure
+      description: Please disclose if AI tools were used to draft this ticket.
+      options:
+        - label: I used AI assistance (e.g., an LLM or AI coding agent) to draft some or all of this ticket.

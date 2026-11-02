@@ -1,0 +1,14 @@
+# Disable blank issues to force template usage
+blank_issues_enabled: false
+
+# Provide alternative support channels
+contact_links:
+  - name: Creating CHAOSS Agent Skills Guide
+    url: https://github.com/chaoss/skills-library/blob/main/docs/creating-skills.md
+    about: Official documentation for creating Agent Skills in the CHAOSS Agent Skills Library.
+  - name: Reviewing CHAOSS Agent Skills Guide
+    url: https://github.com/chaoss/skills-library/blob/main/docs/reviewing-skills.md
+    about: Official documentation for reviewing Agent Skills contributions.
+  - name: "Howto: CHAOSS DCO Setup"
+    url: https://chaoss.community/kb/dco-setup/
+    about: How to configure Developer Certificate of Origin sign-off for CHAOSS contributions.

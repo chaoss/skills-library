@@ -1,0 +1,96 @@
+---
+name: New Skill Proposal
+description: Propose a new reusable AI skill for the CHAOSS Agent Skills Library.
+title: '[Skill Proposal]: '
+labels:
+  - 'enhancement'
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Propose a new Agent Skill
+        Use this form to propose a new reusable AI skill for the [CHAOSS Agent Skills Library](https://github.com/chaoss/skills-library). Skills provide AI coding agents with specialized context, procedural steps, and reference materials for CHAOSS community workflows.
+
+        This form is a place to discuss an idea for a skill before building it. It is not a required step: if you already have a skill written and ready for review, feel free to open a Pull Request directly instead.
+
+        For guidance on how skills are structured and reviewed, see the [Creating Agent Skills guide](https://github.com/chaoss/skills-library/blob/main/docs/creating-skills.md) and the [Reviewing Agent Skills guide](https://github.com/chaoss/skills-library/blob/main/docs/reviewing-skills.md).
+
+  - type: input
+    id: skill-name
+    attributes:
+      label: Proposed Skill Name
+      description: Must follow the canonical `<domain>-<subject>[-<qualifier>]-<verb>` naming schema using lowercase ASCII letters and hyphens only, ending in an infinitive verb (no gerunds ending in `-ing`), at most four words.
+      placeholder: e.g., chaoss-contribution-triage, chaoss-metrics-release-review, collectoss-repo-health-summarize...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain-prefix
+    attributes:
+      label: Domain Scope and Prefix
+      description: Select the prefix category that matches your skill's integration scope and dependencies.
+      options:
+        - "chaoss-* (Direct integration with CHAOSS infrastructure: the chaoss GitHub org, chaoss.community, metrics releases, CHAOSScon, 8Knot, CollectOSS)"
+        - "Tool-specific prefix (Integration with an upstream ecosystem tool or service: e.g. collectoss-*)"
+        - "Generic / Unprefixed (General productivity tasks with zero CHAOSS-specific dependencies)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Skill Description and Trigger Conditions
+      description: Provide one or two sentences explaining what the skill accomplishes and when an agent should invoke it (populates `description:` in `SKILL.md`).
+      placeholder: e.g., Triage contribution activity for a CHAOSS repository - staged workflow for reviewing issues and pull requests...
+    validations:
+      required: true
+
+  - type: textarea
+    id: workflow-steps
+    attributes:
+      label: Workflow Stages and Procedural Outline (Optional)
+      description: Outline the sequential stages the agent will execute, required CLI commands or tools, expected inputs, and how missing data or errors should be handled.
+      placeholder: |
+        Stage 1: Gather issue metadata via GitHub API...
+        Stage 2: Classify the contribution type...
+        Stage 3: Draft the triage summary...
+
+  - type: textarea
+    id: output-format
+    attributes:
+      label: Expected Output and Demonstration Example (Optional)
+      description: Describe the output structure (e.g. structured markdown table, GitHub comment) and target destination. Provide a brief verbatim example demonstrating the expected output format.
+      placeholder: "e.g., Markdown table with columns: Issue, Type, Status, Triage Action..."
+
+  - type: input
+    id: metadata-tags
+    attributes:
+      label: Audience and Workstream Tags (Optional)
+      description: Provide comma-separated classification tags for `metadata.tags` in `SKILL.md` (e.g., audience like `contributor`, `maintainer`, `researcher`; workstreams like `metrics`, `triage`, `meetings`, `data`, `community`).
+      placeholder: e.g., contributor, triage, github
+
+  - type: textarea
+    id: references-assets
+    attributes:
+      label: Supporting References and Templates (Optional)
+      description: List any reference documentation needed in `references/` or output templates planned for `assets/`.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: ai-disclosure
+    attributes:
+      label: AI Assistance Disclosure
+      description: In line with CHAOSS community practice, please disclose if AI tools were used to draft this proposal and add an `Assisted-by:` or `Generated-by:` trailer on related commits.
+      options:
+        - label: I used AI assistance (e.g., an LLM or AI coding agent) to draft some or all of this proposal.
+
+  - type: checkboxes
+    id: author-acknowledgements
+    attributes:
+      label: Author Acknowledgements
+      options:
+        - label: I understand that all contributions are licensed under CC BY 4.0 and require DCO sign-off (https://chaoss.community/kb/dco-setup/).
+          required: true
+        - label: I confirm that no API keys, personal access tokens, or private credentials are included in this skill.
+          required: true
