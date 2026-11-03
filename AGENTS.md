@@ -37,12 +37,28 @@ The directory slug and the `name` field in `SKILL.md` frontmatter must match exa
 All files needed by a skill must reside in its directory.
 Skills must not reference or depend on files inside other skill directories.
 
+## Available skills
+
+### `chaoss-moderation-link-review`
+
+Reviews `Add link:` issues in `chaoss/wg-ai-alignment` and adds the approved link to `moderation/README.md`, the "Awesome LLM Policy" catalog.
+The skill runs one staged workflow: gather the submission, validate the URL, check for duplicates, map the request to a catalog section, format and place the entry, propose the exact change to the maintainer, then prepare the commit and close the issue.
+
+- **Scope**: `moderation/README.md` only.
+  Working group metrics, meeting notes, and issue-template changes belong to other workflows.
+- **References**: `references/section-map.md` maps each form option to a catalog heading and defines the entry format.
+  `references/precedents.md` records past resolutions and commit conventions.
+  `references/gitmojis.json` and `references/gitmojis-LICENSE.txt` are the vendored gitmoji data and its MIT license.
+- **Assets**: `assets/issue-comment.md` holds the closing comments, and `assets/commit-message.txt` holds the commit message template.
+- **Safety posture**: draft local edits only after the maintainer approves the exact entry line, and print commit, push, comment, close, and pull request commands for the maintainer to run.
+
 ## Repository layout
 
 | Path | Purpose |
 |------|---------|
 | `skills/` | Skills directory -- one subdirectory per skill |
 | `skills/<skill-name>/SKILL.md` | Skill entry point: metadata + instructions |
+| `skills/chaoss-moderation-link-review/` | Moderation link review skill; see [Available skills](#available-skills) |
 | `docs/skills.md` | Library overview and governance |
 | `docs/creating-skills.md` | Authoring guide: anatomy, frontmatter, naming schema |
 | `docs/reviewing-skills.md` | Review guide: CI checks and human criteria |
@@ -145,7 +161,8 @@ The same checks run in GitHub Actions on every pull request via `.github/workflo
 
 ## Common tasks
 
-- "Add a new skill -- I want to add a skill for [workflow]. Create a new directory under `skills/` with a `SKILL.md` following the Agent Skills format."
+- "Add a new skill -- I want to add a skill for [workflow]. Create a new directory under `skills/` with a `SKILL.md` following the Agent Skills format, then list it in `README.md`, `docs/skills.md`, and the Available skills section above."
+- "Review an Add link issue -- read `skills/chaoss-moderation-link-review/SKILL.md` and run its workflow against issue #[number] in `chaoss/wg-ai-alignment`."
 - "Improve an existing skill -- I want to improve how the [skill-name] skill handles [specific aspect]. Read `skills/<skill-name>/SKILL.md` and suggest changes."
 - "Update a skill's reference data -- [something] has changed. Update the relevant file in `skills/<skill-name>/references/`."
 

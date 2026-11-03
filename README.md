@@ -8,8 +8,11 @@ Skills follow the [Agent Skills](https://agentskills.io/specification) open form
 
 ## Skills
 
-The library is new and no skills have been merged yet.
-Propose the first one with the [New Skill Proposal template](https://github.com/chaoss/skills-library/issues/new?template=new-skill.yml).
+| Skill | Description |
+|-------|-------------|
+| [`chaoss-moderation-link-review`](skills/chaoss-moderation-link-review/SKILL.md) | Review "Add link" issues in `chaoss/wg-ai-alignment` and add approved links to the moderation catalog with the correct section, entry format, and placement |
+
+Propose a new skill with the [New Skill Proposal template](https://github.com/chaoss/skills-library/issues/new?template=new-skill.yml).
 
 ## Repository layout
 

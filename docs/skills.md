@@ -18,8 +18,11 @@ This project operates on an *agentic-first* development model:
 
 ## Available Skills
 
-The library is new and no skills have been merged yet.
-Watch this space as the first CHAOSS-specific skills land.
+The library currently publishes one skill.
+
+| Skill | Description |
+|-------|-------------|
+| [`chaoss-moderation-link-review`](https://github.com/chaoss/skills-library/tree/main/skills/chaoss-moderation-link-review) | Review "Add link" issues in `chaoss/wg-ai-alignment` and add approved links to the moderation catalog. |
 
 Skill ideas under discussion live on the [issue tracker](https://github.com/chaoss/skills-library/issues).
 

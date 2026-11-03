@@ -24,11 +24,14 @@ Every commit must include DCO sign-off (`git commit --signoff`, or `-s`).
 2. Create a new directory under `skills/` following the canonical `<domain>-<subject>[-<qualifier>]-<verb>` naming schema.
 3. Add a `SKILL.md` with YAML frontmatter (`name`, `description`, `license`, `metadata.author`, `metadata.tags`) and instructions.
 4. Optionally add `references/` and `assets/` subdirectories for supporting files.
-5. Add your skill to the table in `README.md`.
+5. Add your skill to the `README.md` table, the `## Available Skills` section in `docs/skills.md`, and the `## Available skills` section in `AGENTS.md`.
 6. Submit a pull request against `https://github.com/chaoss/skills-library`.
 
 The proposal issue is a place to discuss an idea for a skill before building it, not a required gate.
 If you already have a skill written and ready for review, skip the issue and open a pull request directly.
+
+A new skill is not complete until it appears in all three listings.
+The merged `chaoss-moderation-link-review` skill is the worked example: it is listed in the `README.md` table, in `docs/skills.md`, and in the available-skills section of `AGENTS.md`.
 
 The `name` field in frontmatter must match the directory name exactly.
 See the [Agent Skills specification](https://agentskills.io/specification) and the [Creating Agent Skills guide](docs/creating-skills.md) for the full format.
@@ -41,6 +44,7 @@ To improve a skill's instructions, reference data, or templates:
 1. Read the skill's `SKILL.md` to understand its current design.
 2. Make your changes inside the skill directory.
 3. Submit a pull request describing what you changed and why.
+4. If the change alters the skill's scope, prerequisites, or safety boundaries, update the matching entry in `AGENTS.md` and the description in `README.md` and `docs/skills.md`.
 
 For substantial changes to a skill's core instructions, open an issue first to discuss the motivation and approach.
 For small fixes (typos, clarifications, outdated reference data), a direct pull request is fine.
