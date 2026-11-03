@@ -38,6 +38,12 @@ All contributions require [DCO sign-off](https://chaoss.community/kb/dco-setup/)
 - Emma Irwin ([@emmairwin](https://github.com/emmairwin))
 - Coraline Ada Ehmke ([@coralineada](https://github.com/coralineada))
 
+## Credits
+
+The moderation link review skill vendors the [Gitmoji](https://github.com/carloscuesta/gitmoji) specification as `skills/chaoss-moderation-link-review/references/gitmojis.json`, retrieved from `https://gitmoji.dev/api/gitmojis`.
+Gitmoji is Copyright (c) 2016-2022 Carlos Cuesta and distributed under the MIT License.
+The full license text is bundled alongside the data in `skills/chaoss-moderation-link-review/references/gitmojis-LICENSE.txt`.
+
 ## License
 
 [CC BY 4.0](LICENSE.txt) - Justin Wheeler, CHAOSS, and community contributors.

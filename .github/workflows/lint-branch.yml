@@ -1,0 +1,31 @@
+name: "Validate branch"
+
+# Branch pushes and pull requests are validated by separate workflows on
+# purpose. A pull request run must list only the pull request checks, with no
+# skipped branch job, and a branch run must be able to change without altering
+# what a pull request reports.
+on:
+  push:
+    branches: ["**"]
+  # Manual runs are useful for testing this workflow itself; the run uses the
+  # workflow file from the selected ref.
+  workflow_dispatch:
+
+# Cancel superseded runs for the same branch so a rapid series of pushes only
+# validates the newest commit.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: actions/checkout@v7
+
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@v10.3.3
+
+      - name: "Validate manifests and scripts syntax"
+        run: make lint

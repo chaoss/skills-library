@@ -1,0 +1,5 @@
+📝 moderation: Add {{ENTRY_NAME}}
+
+{{RATIONALE}}
+
+Closes #{{ISSUE_NUMBER}}.

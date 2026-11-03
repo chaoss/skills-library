@@ -1,0 +1,46 @@
+name: "Refresh skillsaw badge"
+
+# The README badge is served by shields.io from the committed
+# .skillsaw-badge.json on the default branch, so regenerating that file in a
+# runner is not enough: the result has to land in the repository. Refresh it
+# after every change to main and commit only when the grade actually moved.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# The job pushes to the default branch, so the token needs write access to
+# repository contents.
+permissions:
+  contents: write
+
+concurrency:
+  group: "skillsaw-badge"
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    # A manual run can target any ref; only ever write to the default branch.
+    if: github.ref == 'refs/heads/main'
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout the repository"
+        uses: actions/checkout@v7
+
+      - name: "Install uv"
+        uses: astral-sh/setup-uv@v10.3.3
+
+      - name: "Regenerate the badge"
+        run: make badge
+
+      - name: "Commit the badge when the grade changed"
+        run: |
+          if git diff --quiet -- .skillsaw-badge.json; then
+            echo "Badge is current; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .skillsaw-badge.json
+          git commit --signoff -m "📝 README: Refresh Skillsaw grade from CI"
+          git push
